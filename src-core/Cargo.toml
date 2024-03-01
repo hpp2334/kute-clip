@@ -1,0 +1,30 @@
+[package]
+name = "kute-clip-core"
+version = "0.0.2"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rusqlite = { version = "0.30.0", features = ["bundled"] }
+serde_rusqlite = "0.34.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1"
+serde_repr = "0.1"
+global-hotkey = "0.2.4"
+getset = "0.1.2"
+misty-vm = { version = "0.1.3" }
+misty-vm-test = { version = "0.1.3" }
+image = "0.25.0"
+tokio = { version = "1", features = ["time"] }
+base64 = "0.22.0"
+keyboard-types = { version = "0.6.2", features = ["serde"] }
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+tempdir = "0.3.7"
+
+[dev-dependencies]

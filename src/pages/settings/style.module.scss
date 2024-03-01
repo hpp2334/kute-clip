@@ -1,0 +1,120 @@
+@import "../../theme.module.scss";
+
+.screenContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .backBtn {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        cursor: pointer;
+    }
+
+    .settingContainer {
+        position: absolute;
+        left: 56px;
+        right: 56px;
+        top: 0px;
+        bottom: 0px;
+        display: flex;
+        flex-direction: column;
+
+        .sectionTitle {
+            color: $colorTextSecondary;
+        }
+
+        .divider {
+            width: 230px;
+            height: 1px;
+            background-color: $colorTextSecondary;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 7px;
+
+            .option {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 7px;
+                cursor: pointer;
+
+                .checkboxDesc {
+                    padding-bottom: 1px;
+                }
+            }
+        }
+
+        .shortcutContainer {
+            .shortcutTitle {
+                padding-bottom: 5px;
+            }
+        }
+
+        .aboutContent {
+            display: flex;
+            gap: 20px;
+
+            .aboutLogo {}
+
+            .desc {
+                flex-direction: column;
+                padding-top: 20px;
+            }
+        }
+
+        .shortcutInputContainer {
+            position: relative;
+            width: 150px;
+            height: 26px;
+            
+            &.focused {
+                color: $colorSelected;
+
+                .baseInput {
+                    color: $colorSelected;
+                }
+            }
+
+            .baseInput {
+                position: absolute;
+                left: 2px;
+                top: 2px;
+                right: 2px;
+                bottom: 2px;
+                font-size: 8px;
+                padding-top: 4px;
+                padding-left: 6px;
+                border: none;
+                outline: none;
+            }
+
+            .shortcutInput {
+                &::selection {
+                    background-color: transparent;
+                }
+            }
+        }
+
+        .panel {
+            display: flex;
+            gap: 20px;
+        }
+    }
+}
+
+.checkbox {
+    color: transparent;
+    cursor: pointer;
+
+    &.checked {
+        color: $colorSelected;
+    }
+}

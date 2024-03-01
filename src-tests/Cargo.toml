@@ -1,0 +1,18 @@
+[package]
+name = "kute-clip-test"
+version = "0.0.2"
+authors = ["you"]
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+misty-vm = { version = "0.1.3" }
+misty-vm-test = { version = "0.1.3" }
+tokio = { version = "1", features = ["time"] }
+tempdir = "0.3.7"
+kute-clip-core = { path = "../src-core" }
+global-hotkey = "0.2.4"
+tracing = "0.1"
+tracing-subscriber = "0.3"

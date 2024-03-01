@@ -1,0 +1,43 @@
+@import "../../theme.module.scss";
+
+.emptyContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: $colorAppBackground;
+
+    .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: $colorTextPrimary;
+
+        .title {
+            font-size: 16px;
+        }
+        
+        .subTitle {
+            font-size: 10px;
+            color: $colorTextSecondary;
+        }
+    }
+
+    .b1 {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    .settingIcon {
+        position: absolute;
+        left: 14px;
+        bottom: 9px;
+        color: $colorTextPrimary;
+        cursor: pointer;
+    }
+}
