@@ -74,12 +74,13 @@ fn build_v_clipboard_history_item(
     match item {
         ClipboardHistoryItem::Text(item) => {
             let text = item.text();
+            // For list item, limit string length to 300
+            let limit_index = text.char_indices().nth(300);
             VClipboardHistoryItem {
                 id,
                 typ: ClipboardHistoryItemType::Text,
-                // For list item, limit string length to 300
-                text: if text.len() > 300 {
-                    text[0..300].to_string() + "..."
+                text: if let Some((r, _)) = limit_index {
+                    text[0..r].to_string() + "..."
                 } else {
                     text.to_string()
                 },
@@ -112,12 +113,13 @@ fn build_v_clipboard_history_detail_item(
         ClipboardHistoryItem::Text(item) => {
             let text = item.text();
             let chars_len = text.len();
+            // For detail item, limit string length to 3000 due to performance
+            let limit_index = text.char_indices().nth(3000);
             VClipboardHistoryDetailItem {
                 id,
                 typ: ClipboardHistoryItemType::Text,
-                // For detail item, limit string length to 3000 due to performance
-                text: if chars_len > 3000 {
-                    text[0..3000].to_string() + "..."
+                text: if let Some((r, _)) = limit_index {
+                    text[0..r].to_string() + "..."
                 } else {
                     text.to_string()
                 },
