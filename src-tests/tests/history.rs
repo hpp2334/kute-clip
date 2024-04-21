@@ -233,3 +233,27 @@ fn change_limit_and_copy() {
 
     app.assert_reload_from_app_dir(&app_dir);
 }
+
+#[test]
+fn slice_into_invalid_utf8_text() {
+    let app = FakeAppRef::new();
+    let app_dir = app.setup();
+
+    // '𒀀' is 4 bytes
+    let to_copy = "a".to_string() + "𒀀".repeat(400).as_str();
+    let view_expected = "a".to_string() + "𒀀".repeat(299).as_str() + "...";
+    app.trigger_copy(ClipboardItem::Text(to_copy.clone()));
+
+    let state = app.state();
+    assert_eq!(state.clipboard_history.unwrap().items.len(), 1);
+    let text = app.state().clipboard_history.unwrap().items[0].clone().text;
+    assert_eq!(text, view_expected);
+
+    // paste
+    app.keypress(Code::Enter, None);
+    app.wait();
+
+    assert_eq!(app.pasted(), ClipboardItem::Text(to_copy));
+
+    app.assert_reload_from_app_dir(&app_dir);
+}
